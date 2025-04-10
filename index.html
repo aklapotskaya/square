@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square(square(square))</title>
+</head>
+<body>
+<h1>Square(square)</h1>
+<p>Use arrows to move the square.</p>
+<a href="https://maninthedark.com/">Related link</a>
+<br>
+<img src="https://preview.redd.it/a604rad7j4651.png?auto=webp&s=63112b65e516d3e19dcbd05489d09967a2d73dce"width="200" height="100">
+<ul>
+    <li>Press g for green square</li>
+    <li>Press b for black square</li>
+    <li>Press o for orange square</li>
+</ul>
+
+<canvas id="canv" width="600" height="400"></canvas>
+
+<script>
+    const canv = document.getElementById('canv');
+    const ctx = canv.getContext('2d');
+
+    let x = 0;
+    let y = 0;
+
+    const squareSize = 100;
+    let squareColor = 'black';
+
+    function draw() {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canv.width, canv.height); 
+
+        ctx.fillStyle = squareColor;
+        ctx.fillRect(x, y, squareSize, squareSize); 
+        
+    }
+
+    function move(event) {
+        if (event.key === "ArrowRight") x += 10;
+        if (event.key === "ArrowLeft")  x -= 10;
+        if (event.key === "ArrowDown")  y += 10;
+        if (event.key === "ArrowUp")    y -= 10;
+    }
+
+    function changeColor(event) {
+        if (event.key === "g") squareColor = 'green';
+        if (event.key === "b") squareColor = 'black';
+        if (event.key === "o") squareColor = 'orange';
+    }
+
+    document.addEventListener("keydown", move);
+    document.addEventListener("keydown", changeColor);
+
+    setInterval(draw, 50);
+</script>
+
+</body>
+</html>
